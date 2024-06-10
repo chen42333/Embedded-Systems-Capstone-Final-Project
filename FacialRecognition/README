@@ -1,0 +1,17 @@
+execution step:
+    1. Add your own photo to dataset directory following the structure
+        dataset
+            |---username1
+            |---username2
+                |---photo1
+                |---photo2
+
+    2. Add your name to securityList.txt, append a new line with an attribute and your name, e.g. blacklist,bshou
+    
+    3. run encoding to generate encodings,pickle
+        cd encode
+        python encodeface.py
+
+    4. run main.py
+        cd ..
+        python main.py
