@@ -5,6 +5,11 @@ import wave
 import time
 import speech_recognition as sr
 from speech_recognition.recognizers import google, whisper
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
+import dotenv
+dotenv.load_dotenv()
+import os
 
 def py_error_handler(filename, line, function, err, fmt):
     pass
@@ -51,6 +56,10 @@ class STTAgent:
 
 if __name__ == '__main__':
     stt = STTAgent()
+    
     text = stt.run()
     if text != None:
         print(text)
+        CHANNEL_ACCESS_TOKEN = os.getenv("CHANNEL_ACCESS_TOKEN")
+        line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+        line_bot_api.broadcast(TextSendMessage(text = text))
